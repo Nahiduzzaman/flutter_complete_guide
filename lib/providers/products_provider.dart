@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'product_model.dart';
+import './product_model.dart';
 
 class ProductsProvider with ChangeNotifier {
-  final List<Product> _items = [
+  List<Product> _items = [
     Product(
       id: 'p1',
       title: 'Red Shirt',
@@ -47,7 +47,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void addProduct(Product product) {
-    _items.add(product);
+    // _items.add(product);
     notifyListeners();
   }
 }
