@@ -21,3 +21,11 @@ Provider: https://docs.flutter.dev/development/data-and-backend/state-mgmt/simpl
 _ declares private variable in Dart ex: _items
 
 https://selise.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/15179292#overview
+
+if you add listen: false rebuild to see change.
+
+https://selise.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/15100276#questions/7822038
+
+ChangeNotfierProvider.value {
+    value: 
+}
