@@ -29,3 +29,12 @@ https://selise.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/lea
 ChangeNotfierProvider.value {
     value: 
 }
+
+**Consumer**
+suppose you added listen: false the wrapped widget will not listen to update but inside the wrapped
+widget a part wants data and need to be update use 'Consumer' wrap on that subpart 
+you use 'Consumer' when you need data for a just subpart of your code
+
+Consumer<Product>(
+            builder: (ctx, product, child) => IconButton(
+the 3rd param 'child' will not rebuild if want a part inside the subpart that should'nt rebuld
