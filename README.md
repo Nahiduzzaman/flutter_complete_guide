@@ -38,3 +38,8 @@ you use 'Consumer' when you need data for a just subpart of your code
 Consumer<Product>(
             builder: (ctx, product, child) => IconButton(
 the 3rd param 'child' will not rebuild if want a part inside the subpart that should'nt rebuld
+
+With provider we were managing global app state when applying filter in one page it was also applying on other pages.
+
+for this we will turn stateless widget to stateful to manage state only in that widget not in whole app
+check commit name: turning into stateful widget
