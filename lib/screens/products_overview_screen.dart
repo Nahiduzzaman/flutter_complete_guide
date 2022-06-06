@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/providers/cart_provider.dart';
-import 'package:flutter_complete_guide/screens/cart_screen.dart';
+import '../providers/cart_provider.dart';
+import '../screens/cart_screen.dart';
+import '../widgets/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/badge.dart';
@@ -61,6 +62,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         ],
       ),
       body: ProductGrid(_showOnlyFavorites),
+      drawer: SizedBox(
+        width: MediaQuery.of(context).size.width * 1,
+        child: AppDrawer(),
+      ),
     );
   }
 }
