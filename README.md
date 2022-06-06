@@ -43,3 +43,10 @@ With provider we were managing global app state when applying filter in one page
 
 for this we will turn stateless widget to stateful to manage state only in that widget not in whole app
 check commit name: turning into stateful widget
+
+When you should use stateful widget at 2.30
+https://selise.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/15100340#questions
+
+
+State Management
+https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro
