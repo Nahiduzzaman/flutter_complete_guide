@@ -50,3 +50,14 @@ https://selise.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/lea
 
 State Management
 https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro
+
+Scaffold.of(context) return the nearest scaffold 
+
+product_overview_screen has scafold
+    its child is Productgrid has not any scaffold
+        ProductGrid's child is productItem has not any scafolde
+          so form productItem we can get scafold of product_overview screen
+
+Define route inside stl or stf class
+
+if you use focus node you need to dispose it to avoid memory leaks
