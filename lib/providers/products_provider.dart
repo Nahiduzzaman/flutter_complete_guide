@@ -68,22 +68,48 @@ class ProductsProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> addProduct(Product product) {
+  Future<void> fetchAndSetProducts() async {
     final url = Uri.parse(
-        'https://flutter-complete-guide-64a04-default-rtdb.asia-southeast1.firebasedatabase.app/');
-    return http
-        .post(
-      url,
-      body: json.encode({
-        'title': product.title,
-        'description': product.description,
-        'imageUrl': product.imageUrl,
-        'price': product.price,
-        'isFavorite': product.isFavorite,
-      }),
-    )
-        .then((response) {
-      print(response.body);
+        'https://flutter-complete-guide-64a04-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
+    try {
+      final response = await http.get(url);
+      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      final List<Product> loadedProducts = [];
+      extractedData.forEach((productId, productData) {
+        loadedProducts.add(Product(
+          id: productId,
+          title: productData['title'],
+          description: productData['description'],
+          price: productData['price'],
+          isFavorite: productData['isFavorite'],
+          imageUrl: productData['imageUrl'],
+        ));
+      });
+      _items = loadedProducts;
+      notifyListeners();
+      if (extractedData == null) {
+        return;
+      }
+    } catch (error) {
+      print(error);
+      throw error;
+    }
+  }
+
+  Future<void> addProduct(Product product) async {
+    final url = Uri.parse(
+        'https://flutter-complete-guide-64a04-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'title': product.title,
+          'description': product.description,
+          'imageUrl': product.imageUrl,
+          'price': product.price,
+          'isFavorite': product.isFavorite,
+        }),
+      );
       final newProduct = Product(
         id: json.decode(response.body)['name'],
         title: product.title,
@@ -93,10 +119,10 @@ class ProductsProvider with ChangeNotifier {
       );
       _items.add(newProduct);
       notifyListeners();
-    }).catchError((error) {
-      throw error;
+    } catch (error) {
       print(error);
-    });
+      throw error;
+    }
   }
 
   void updateProduct(String id, Product newProduct) {
